@@ -264,7 +264,7 @@ void DispatchBiasSoftMaxForwardViaDnnLibraryImpl(
   for (int i = -1; i >= -(int)X_shape.NumDimensions(); i--) {
     size_t positive_ix = X_shape.NumDimensions() + i;
     size_t positive_ib = B_shape.NumDimensions() + i;
-    if (broadcast_axis <= positive_ix && positive_ix < softmax_axis) {
+    if (static_cast<size_t>(broadcast_axis) <= positive_ix && positive_ix < static_cast<size_t>(softmax_axis)) {
       rhs_padded_strides[static_cast<int>(positive_ix)] = 0;
       continue;
     }
