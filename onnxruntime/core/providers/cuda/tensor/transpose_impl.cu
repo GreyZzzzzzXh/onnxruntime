@@ -34,7 +34,7 @@ bool CanDoTranspose3D(const cudaDeviceProp& prop,
                       dim3& grid_size, dim3& block_size) {
   if (rank == 3 &&
       // permutation is done in the last two dimensions.
-      permutations[rank - 2] == (rank - 1) && permutations[rank - 1] == (rank - 2) &&
+      permutations[rank - 2] == static_cast<size_t>(rank - 1) && permutations[rank - 1] == static_cast<size_t>(rank - 2) &&
       // the last two dimensions are aligned with TILE_DIM.
       input_dims[rank - 2] % TILE_DIM == 0 && input_dims[rank - 1] % TILE_DIM == 0) {
     int grid_size_x = static_cast<int>(input_dims[2] / TILE_DIM);

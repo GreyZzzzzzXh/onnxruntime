@@ -112,7 +112,7 @@ constexpr HRESULT StatusCodeToHRESULT(StatusCode status) noexcept {
 }
 #endif
 
-class [[nodiscard]] Status {
+class Status {
  public:
   Status() noexcept = default;
 
